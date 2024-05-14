@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Mesage } from "./Mesage";
 
 export const SimpleForm = () => {
   const [formState, setFormState] = useState({
@@ -25,17 +26,17 @@ export const SimpleForm = () => {
 
   //se ejecuta simpre, no es recomendado
   useEffect(() => {
-    console.log("Se ejecuto el useEfect");
+    // console.log("Se ejecuto el useEfect");
   });
 
   //se ejecuta una sola vez al cargar el componente
   useEffect(() => {
-    console.log("Se ejecuta una sola vez al cargar...");
+    //console.log("Se ejecuta una sola vez al cargar...");
   }, []);
 
   //se ejecuta cada vez que cambia el emai
   useEffect(() => {
-    console.log("se eejcuta al cambiar el email");
+    // console.log("se eejcuta al cambiar el email");
   }, [email]);
 
   return (
@@ -58,6 +59,7 @@ export const SimpleForm = () => {
         value={email}
         onChange={inputChange}
       />
+      {username === "lenin2" && <Mesage />}
     </>
   );
 };
