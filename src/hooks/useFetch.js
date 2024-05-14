@@ -35,6 +35,10 @@ export const useFetch = (url) => {
     //     code: resp.status, --> lo tomo de la respuesta
     //     message: resp.status.code,
     //   },
+
+    //relentizando la carga solo para probar
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     if (!resp.ok) {
       setState({
         data: null,
@@ -55,7 +59,7 @@ export const useFetch = (url) => {
       hasError: false,
       error: null,
     });
-    console.log(data);
+    //console.log(data);
   };
 
   return {
