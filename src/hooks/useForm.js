@@ -10,8 +10,14 @@ export const useForm = (initialForm = {}) => {
     });
   };
 
+  const onResetForm = () => {
+    setFormState(initialForm);
+    console.log(initialForm);
+  };
+
   return {
     formState,
     inputChange,
+    onResetForm,
   };
 };
