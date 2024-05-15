@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+const localCache = {};
+//tambien se puede utilizar Tanstackquery
+
 export const useFetch = (url) => {
   const [state, setState] = useState({
     data: null,
@@ -23,6 +26,19 @@ export const useFetch = (url) => {
   };
 
   const getFetch = async () => {
+    //verifico si tengo guardado en localCache
+    console.log(localCache);
+    if (localCache[url]) {
+      console.log("usando cache");
+      setState({
+        data: localCache[url],
+        isLoading: false,
+        hasError: false,
+        error: false,
+      });
+      return;
+    }
+
     setLoadingState();
     const resp = await fetch(url);
 
@@ -60,6 +76,9 @@ export const useFetch = (url) => {
       error: null,
     });
     //console.log(data);
+
+    //manejo del cache
+    localCache[url] = data;
   };
 
   return {
